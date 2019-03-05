@@ -49,6 +49,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClipboardHook.cs" />
     <Compile Include="DwmApi.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Extensions.cs" />

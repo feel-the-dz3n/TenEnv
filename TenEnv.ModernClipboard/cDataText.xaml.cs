@@ -15,13 +15,14 @@ using System.Windows.Shapes;
 namespace TenEnv.ModernClipboard
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for cDataText.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class cDataText : UserControl
     {
-        public MainWindow()
+        public cDataText(string text = "")
         {
             InitializeComponent();
+            tb.Text = text;
         }
     }
 }

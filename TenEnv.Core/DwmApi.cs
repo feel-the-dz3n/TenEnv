@@ -83,15 +83,19 @@ namespace TenEnv.Core
         [DllImport("dwmapi.dll", PreserveSig = false)]
         public static extern bool DwmIsCompositionEnabled();
 
-        public static void Glass(Window win, int left = -1, int right = -1, int top = -1, int bottom = -1)
+        public static void Glass(Window wnd, int left = -1, int right = -1, int top = -1, int bottom = -1)
         {
             if (!CheckAeroEnabled())
                 return;
 
-            WindowInteropHelper windowInterop = new WindowInteropHelper(win);
-            IntPtr windowHandle = windowInterop.Handle;
+            WindowInteropHelper windowInterop = new WindowInteropHelper(wnd);
+            var windowHandle = windowInterop.Handle;
+
+            if (windowHandle == IntPtr.Zero)
+                return;
+
             HwndSource mainWindowSrc = HwndSource.FromHwnd(windowHandle);
-            mainWindowSrc.CompositionTarget.BackgroundColor = Colors.Transparent;
+            // mainWindowSrc.CompositionTarget.BackgroundColor = Colors.Transparent;
             Margins margins = GetMargins(windowHandle, left, right, top, bottom);
 
             int returnVal = DwmExtendFrameIntoClientArea(mainWindowSrc.Handle, ref margins);

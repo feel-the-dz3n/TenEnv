@@ -23,10 +23,6 @@ namespace TenEnv.ModernScreenshot
     /// </summary>
     public partial class ScreenshotWnd : Window
     {
-        [DllImport("gdi32.dll", EntryPoint = "DeleteObject")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        public static extern bool DeleteObject([In] IntPtr hObject);
-
         public const int FadeTime = 500;
         Core.GlobalKeyboardHook Kbd = null;
 
@@ -49,7 +45,10 @@ namespace TenEnv.ModernScreenshot
                 e.Key == Key.S &&
                 Core.Keyboard.IsKeyDown(Key.LeftShift) &&
                 Core.Keyboard.IsKeyDown(Core.Core.SuperKey))
+            {
+                e.Handled = true;
                 DoSnip();
+            }
         }
 
         public BitmapImage GetScreenshot()
@@ -68,34 +67,10 @@ namespace TenEnv.ModernScreenshot
                 {
                     g.CopyFromScreen((int)screenLeft, (int)screenTop, 0, 0, bmp.Size);
 
-                    using (MemoryStream memory = new MemoryStream())
-                    {
-                        bmp.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
-                        memory.Position = 0;
-
-                        BitmapImage bitmapImage = new BitmapImage();
-                        bitmapImage.BeginInit();
-                        bitmapImage.StreamSource = memory;
-                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                        bitmapImage.EndInit();
-
-                        return bitmapImage;
-                    }
-
-                    // return ImageSourceForBitmap(bmp);
+                    return Core.Core.ImageSourceFromBitmap(bmp);
                 }
 
             }
-        }
-
-        public ImageSource ImageSourceForBitmap(Bitmap bmp)
-        {
-            var handle = bmp.GetHbitmap();
-            try
-            {
-                return System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(handle, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-            }
-            finally { DeleteObject(handle); }
         }
 
         public void Finish(ImageSource img)

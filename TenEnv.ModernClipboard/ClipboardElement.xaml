@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="TenEnv.ModernClipboard.ClipboardElement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TenEnv.ModernClipboard"
+             mc:Ignorable="d" 
+             Height="116" Width="288" Margin="16,0,16,16" Background="#0AFFFFFF" Foreground="#A5FFFFFF">
+    <Grid>
+        <Grid x:Name="GridForData"/>
+        <TextBlock x:Name="tbTime" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="13,0,0,15" Foreground="#72FFFFFF">13:33</TextBlock>
+    </Grid>
+</UserControl>
