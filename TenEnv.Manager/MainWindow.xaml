@@ -8,7 +8,7 @@
         Title="Windows 10 Environment" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
 
-        <ListBox x:Name="lbTenApps">
+        <ListBox x:Name="lbTenApps" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
 
         </ListBox>
     </Grid>
