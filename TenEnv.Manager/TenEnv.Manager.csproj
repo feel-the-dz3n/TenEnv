@@ -99,6 +99,10 @@
       <Project>{941efc2c-17e8-45cf-89f1-4b11ecd197ff}</Project>
       <Name>TenEnv.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TenEnv.ExceptionHandler\TenEnv.ExceptionHandler.csproj">
+      <Project>{f395c5ee-e7a3-4fcb-9e65-ab27872feade}</Project>
+      <Name>TenEnv.ExceptionHandler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TenEnv.ModernClipboard\TenApp.ModernClipboard.csproj">
       <Project>{53dd1b09-295b-4ba6-9d02-b7c68bee5bc3}</Project>
       <Name>TenApp.ModernClipboard</Name>

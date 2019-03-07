@@ -19,6 +19,8 @@ namespace TenEnv.Core
         public string LastLoadedDate = "Unknown Date";
         public string LastSavedDate = "Unknown Date";
 
+        public ClipboardConfig Clipboard = new ClipboardConfig();
+
         public XmlConfig() { }
 
 
@@ -57,5 +59,11 @@ namespace TenEnv.Core
                 ser.Serialize(stream, this);
             }
         }
+    }
+
+    [Serializable]
+    public class ClipboardConfig
+    {
+        public int MaximumEntries = 10;
     }
 }

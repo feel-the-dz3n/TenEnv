@@ -15,19 +15,11 @@ namespace TenEnv.TestTool
         {
             System.Windows.Forms.MessageBox.Show("You are running this program for the first time, so some features needs to be tested on your computer.", Title);
 
-            try
-            {
-                var result = new WpfTest().ShowDialog();
-                if (!(bool)result)
-                {
-                    throw new Exception("User can't read text from the 1st step of the test");
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.ToString(), Title, System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-                return false;
-            }
+            if (!(bool)new WpfTest().ShowDialog())
+                throw new Exception("User can't read text from the 1st step of the test");
+
+            if (!(bool)new WpfScreenshotTest().ShowDialog())
+                throw new Exception("User can't see the screenshot");
 
             return true;
         }

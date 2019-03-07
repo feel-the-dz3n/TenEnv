@@ -51,10 +51,8 @@ namespace TenEnv.ModernScreenshot
             }
         }
 
-        public BitmapImage GetScreenshot()
+        public static BitmapImage GetScreenshot()
         {
-            this.Activate();
-
             double screenLeft = SystemParameters.VirtualScreenLeft;
             double screenTop = SystemParameters.VirtualScreenTop;
             double screenWidth = SystemParameters.VirtualScreenWidth;
@@ -104,18 +102,23 @@ namespace TenEnv.ModernScreenshot
 
             this.Visibility = Visibility.Visible;
 
-            imgScreen.Source = GetScreenshot();
-
             this.IsHitTestVisible = true;
             // MainGrid.Opacity = 1;
             MainGrid.FadeIn(FadeTime, 250);
             this.Activate();
+
+            throw new Exception("Fuck");
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             e.Cancel = true;
             HideSnip();
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

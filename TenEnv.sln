@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenApp.ModernScreenshot", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenEnv.TestTool", "TenEnv.TestTool\TenEnv.TestTool.csproj", "{C3AE5539-A206-4250-AFAD-206AB7D65F88}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenEnv.ExceptionHandler", "TenEnv.ExceptionHandler\TenEnv.ExceptionHandler.csproj", "{F395C5EE-E7A3-4FCB-9E65-AB27872FEADE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C3AE5539-A206-4250-AFAD-206AB7D65F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3AE5539-A206-4250-AFAD-206AB7D65F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3AE5539-A206-4250-AFAD-206AB7D65F88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F395C5EE-E7A3-4FCB-9E65-AB27872FEADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F395C5EE-E7A3-4FCB-9E65-AB27872FEADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F395C5EE-E7A3-4FCB-9E65-AB27872FEADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F395C5EE-E7A3-4FCB-9E65-AB27872FEADE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

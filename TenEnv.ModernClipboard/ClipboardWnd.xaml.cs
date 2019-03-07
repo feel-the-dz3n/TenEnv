@@ -19,6 +19,8 @@ namespace TenEnv.ModernClipboard
     /// </summary>
     public partial class ClipboardWnd : Window
     {
+        private int MaximumInUI = 1;
+
         IntPtr _ClipboardViewerNext = IntPtr.Zero;
         Core.GlobalKeyboardHook hook;
         private const int WM_DRAWCLIPBOARD = 0x0308;
@@ -26,6 +28,9 @@ namespace TenEnv.ModernClipboard
         public ClipboardWnd()
         {
             InitializeComponent();
+
+            var cfg = Core.XmlConfig.LoadConfig();
+            MaximumInUI = cfg.Clipboard.MaximumEntries;
 
             this.Left = this.Width - this.Width;
             this.Top = this.Height - this.Height;
@@ -51,6 +56,17 @@ namespace TenEnv.ModernClipboard
             ClipboardPanel.Children.Insert(0,
                 new ClipboardElement(data, time)
                 );
+            
+            if(ClipboardPanel.Children.Count >= MaximumInUI)
+            {
+                var last = ClipboardPanel.Children[MaximumInUI - 1];
+
+                ClipboardPanel.Children.Remove(last);
+
+                ((ClipboardElement)last).Free();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+            }
         }
 
         public void UIFromCache(List<ClipboardDataForCache> c)
@@ -120,12 +136,12 @@ namespace TenEnv.ModernClipboard
             // idk why but it's broken
             //if (Core.DwmApi.CheckAeroEnabled())
             //{
-            //    this.Background = new SolidColorBrush(Colors.Transparent);
             //    Core.DwmApi.Glass(this);
+            //    this.Background = new SolidColorBrush(Colors.Transparent);
             //}
-            // else
+            //else
             {
-                this.Background = new SolidColorBrush(Color.FromArgb(0xFF, 75, 75, 75));
+                this.Background = new SolidColorBrush(Colors.White);
                 // no aero
                 // improve me
             }

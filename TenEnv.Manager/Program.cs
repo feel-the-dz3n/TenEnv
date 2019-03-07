@@ -10,6 +10,8 @@ namespace TenEnv.Manager
         [STAThread]
         static void Main(string[] args)
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
             if (args.Contains("/reset"))
                 Core.XmlConfig.Delete();
 
@@ -33,5 +35,8 @@ namespace TenEnv.Manager
 
             new MainWindow().ShowDialog();
         }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+            => Core.CrashHelper.UnhandledExceptionHandle(System.Reflection.Assembly.GetCallingAssembly(), (Exception)e.ExceptionObject);
     }
 }

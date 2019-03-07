@@ -26,7 +26,16 @@ namespace TenEnv.Core
 
             // If Manager not found
             if (ManProcess == null && !Debugger.IsAttached)
-                AppProcess.Kill();
+            {
+                var q = System.Windows.Forms.MessageBox.Show(
+                    "You can't start Windows 10 Environment applications without manager. Please, use the program called 'TenEnv.Manager.exe'. If you don't want to start manager, you can attach debugger instead. Do it?",
+                    "Windows 10 Environment Core", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Exclamation);
+
+                if(q == System.Windows.Forms.DialogResult.No)
+                    AppProcess.Kill();
+                else
+                    Debugger.Launch();
+            }
 
             new Thread(CheckThread).Start();
         }
@@ -35,10 +44,11 @@ namespace TenEnv.Core
         {
             while (true)
             {
-                Thread.Sleep(Timeout);
-
                 if (ManProcess.HasExited && !Debugger.IsAttached)
                     AppProcess.Kill();
+
+                Thread.Sleep(Timeout);
+
             }
         }
     }

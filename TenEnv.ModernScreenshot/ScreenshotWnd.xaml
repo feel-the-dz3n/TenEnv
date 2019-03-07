@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TenEnv.ModernScreenshot"
         mc:Ignorable="d"
-        Title="ScreenshotWnd" Height="450" Closing="Window_Closing" Topmost="True" ResizeMode="NoResize" Width="800" ShowInTaskbar="False" AllowsTransparency="True" WindowState="Maximized" WindowStyle="None" Background="Transparent" IsHitTestVisible="False">
+        Title="ScreenshotWnd" Height="450" Closing="Window_Closing" Deactivated="Window_Deactivated" Topmost="True" ResizeMode="NoResize" Width="800" ShowInTaskbar="False" AllowsTransparency="True" WindowState="Maximized" WindowStyle="None" Background="Transparent" IsHitTestVisible="False">
     <Grid x:Name="MainGrid">
         <Grid>
             <Rectangle HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="2" Fill="White"></Rectangle>

@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TenEnv.ModernClipboard"
              mc:Ignorable="d" 
-             d:DesignHeight="116" d:DesignWidth="288">
+             d:DesignHeight="115" d:DesignWidth="287" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
     <Grid>
         <Image x:Name="Img"></Image>
-        <Border Background="#59000000"></Border>
+        <Border Background="#49000000"></Border>
     </Grid>
 </UserControl>

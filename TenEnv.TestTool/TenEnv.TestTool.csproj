@@ -55,6 +55,9 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Tester.cs" />
+    <Compile Include="WpfScreenshotTest.xaml.cs">
+      <DependentUpon>WpfScreenshotTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WpfTest.xaml.cs">
       <DependentUpon>WpfTest.xaml</DependentUpon>
     </Compile>
@@ -87,8 +90,16 @@
       <Project>{941efc2c-17e8-45cf-89f1-4b11ecd197ff}</Project>
       <Name>TenEnv.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TenEnv.ModernScreenshot\TenApp.ModernScreenshot.csproj">
+      <Project>{0776138f-2374-4519-bcb2-de0734d271b7}</Project>
+      <Name>TenApp.ModernScreenshot</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="WpfScreenshotTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WpfTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

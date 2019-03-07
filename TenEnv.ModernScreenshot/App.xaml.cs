@@ -16,10 +16,15 @@ namespace TenEnv.ModernScreenshot
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
             string[] args = e.Args;
 
             var manProcess = Core.TenAppHelper.GetManagerProcessFromArguments(args);
             Man = new Core.ManAttach(System.Diagnostics.Process.GetCurrentProcess(), manProcess);
         }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+            => Core.CrashHelper.UnhandledExceptionHandle(System.Reflection.Assembly.GetCallingAssembly(), (Exception)e.ExceptionObject);
     }
 }

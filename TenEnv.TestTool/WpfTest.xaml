@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TenEnv.TestTool"
         mc:Ignorable="d"
-        Title="Test [1]" Height="131.5" Width="402.5" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen">
+        Title="Windows 10 Environment Test" Height="450" Width="800" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen">
     <Grid>
         <Border Margin="16,16,16,45" CornerRadius="7" BorderBrush="#3F000000" BorderThickness="1">
             <Border.Background>

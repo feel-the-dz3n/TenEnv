@@ -5,9 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TenEnv.ModernClipboard"
              mc:Ignorable="d" 
-             Height="116" Width="288" Margin="16,0,16,16" Background="#0AFFFFFF" Foreground="#A5FFFFFF">
+             Height="116" Width="288" Margin="16,0,16,16">
+
     <Grid>
-        <Grid x:Name="GridForData"/>
-        <TextBlock x:Name="tbTime" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="13,0,0,15" Foreground="#72FFFFFF">13:33</TextBlock>
+        <Button></Button>
+        <Grid x:Name="GridForData" IsHitTestVisible="False"/>
+        <TextBlock x:Name="tbTime" IsHitTestVisible="False" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="13,0,0,15">13:33</TextBlock>
     </Grid>
 </UserControl>
