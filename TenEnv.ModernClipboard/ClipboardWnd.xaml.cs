@@ -38,9 +38,25 @@ namespace TenEnv.ModernClipboard
 
         public void AddData(IDataObject data)
         {
+            //var cache = ClipboardCache.Load();
+            //cache.Objects.Insert(0, new ClipboardDataForCache(data, DateTime.Now));
+            //cache.Save();
+
+            //if (this.Visibility == Visibility.Visible)
+                AddUI(data, DateTime.Now);
+        }
+
+        public void AddUI(IDataObject data, DateTime time)
+        {
             ClipboardPanel.Children.Insert(0,
-                new ClipboardElement(data, DateTime.Now)
+                new ClipboardElement(data, time)
                 );
+        }
+
+        public void UIFromCache(List<ClipboardDataForCache> c)
+        {
+            foreach (var e in c)
+                ClipboardPanel.Children.Add(new ClipboardElement(e.Data, e.Time));
         }
 
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -133,7 +149,13 @@ namespace TenEnv.ModernClipboard
 
         private void BtnClear_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            foreach(var i in ClipboardPanel.Children)
+            ClearUI();
+            ClipboardCache.CacheFile.Delete();
+        }
+
+        public void ClearUI()
+        {
+            foreach (var i in ClipboardPanel.Children)
             {
                 ClipboardElement ec = (ClipboardElement)i;
                 ec.Free();
@@ -152,8 +174,19 @@ namespace TenEnv.ModernClipboard
 
         private void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (this.Visibility == Visibility.Visible)
-                DoAero();
+            //if (this.Visibility == Visibility.Visible)
+            //{
+            //    DoAero();
+                
+            //    var cache = ClipboardCache.Load();
+
+            //    foreach (var eo in cache.Objects)
+            //        AddUI(eo.Data, eo.Time);
+            //}
+            //else
+            //{
+            //    ClearUI();
+            //}
         }
     }
 }

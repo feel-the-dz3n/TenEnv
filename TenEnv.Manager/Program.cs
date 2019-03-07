@@ -7,6 +7,7 @@ namespace TenEnv.Manager
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             if (args.Contains("/reset"))

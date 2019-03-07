@@ -8,6 +8,7 @@ namespace TenEnv.TestTool
     class Program
     {
 
+        [STAThread]
         static int Main()
         {
             if (Test.Perform())

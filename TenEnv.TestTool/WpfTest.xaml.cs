@@ -9,19 +9,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TenEnv.TestTool
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for WpfTest.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WpfTest : Window
     {
-        public MainWindow()
+        public WpfTest()
         {
             InitializeComponent();
+        }
+
+        private void BtnYes_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+            this.Close();
+        }
+
+        private void BtnNo_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
