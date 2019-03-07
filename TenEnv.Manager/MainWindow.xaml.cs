@@ -22,6 +22,9 @@ namespace TenEnv.Manager
         public MainWindow()
         {
             InitializeComponent();
+
+            foreach (var app in TenApps.Apps)
+                lbTenApps.Items.Add(new TenAppEntry() { App = app });
         }
     }
 }

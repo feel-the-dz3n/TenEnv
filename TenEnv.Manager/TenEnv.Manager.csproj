@@ -53,6 +53,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TenApp.cs" />
+    <Compile Include="TenAppEntry.xaml.cs">
+      <DependentUpon>TenAppEntry.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -61,6 +65,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="TenAppEntry.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -91,13 +99,13 @@
       <Project>{941efc2c-17e8-45cf-89f1-4b11ecd197ff}</Project>
       <Name>TenEnv.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TenEnv.ModernClipboard\TenEnv.ModernClipboard.csproj">
+    <ProjectReference Include="..\TenEnv.ModernClipboard\TenApp.ModernClipboard.csproj">
       <Project>{53dd1b09-295b-4ba6-9d02-b7c68bee5bc3}</Project>
-      <Name>TenEnv.ModernClipboard</Name>
+      <Name>TenApp.ModernClipboard</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TenEnv.ModernScreenshot\TenEnv.ModernScreenshot.csproj">
+    <ProjectReference Include="..\TenEnv.ModernScreenshot\TenApp.ModernScreenshot.csproj">
       <Project>{0776138f-2374-4519-bcb2-de0734d271b7}</Project>
-      <Name>TenEnv.ModernScreenshot</Name>
+      <Name>TenApp.ModernScreenshot</Name>
     </ProjectReference>
     <ProjectReference Include="..\TenEnv.TestTool\TenEnv.TestTool.csproj">
       <Project>{c3ae5539-a206-4250-afad-206ab7d65f88}</Project>

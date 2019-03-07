@@ -7,7 +7,7 @@
     <ProjectGuid>{0776138F-2374-4519-BCB2-DE0734D271B7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>TenEnv.ModernScreenshot</RootNamespace>
-    <AssemblyName>TenEnv.ModernScreenshot</AssemblyName>
+    <AssemblyName>TenApp.ModernScreenshot</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

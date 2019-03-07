@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenEnv.Core", "TenEnv.Core\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenEnv.Manager", "TenEnv.Manager\TenEnv.Manager.csproj", "{7178795E-61DB-47DD-8205-F885C3AF1AE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenEnv.ModernClipboard", "TenEnv.ModernClipboard\TenEnv.ModernClipboard.csproj", "{53DD1B09-295B-4BA6-9D02-B7C68BEE5BC3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenApp.ModernClipboard", "TenEnv.ModernClipboard\TenApp.ModernClipboard.csproj", "{53DD1B09-295B-4BA6-9D02-B7C68BEE5BC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenEnv.ModernScreenshot", "TenEnv.ModernScreenshot\TenEnv.ModernScreenshot.csproj", "{0776138F-2374-4519-BCB2-DE0734D271B7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenApp.ModernScreenshot", "TenEnv.ModernScreenshot\TenApp.ModernScreenshot.csproj", "{0776138F-2374-4519-BCB2-DE0734D271B7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TenEnv.TestTool", "TenEnv.TestTool\TenEnv.TestTool.csproj", "{C3AE5539-A206-4250-AFAD-206AB7D65F88}"
 EndProject

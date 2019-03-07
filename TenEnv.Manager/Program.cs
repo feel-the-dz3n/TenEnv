@@ -30,6 +30,8 @@ namespace TenEnv.Manager
                         Environment.Exit(1);
                 }
             }
+
+            new MainWindow().ShowDialog();
         }
     }
 }
