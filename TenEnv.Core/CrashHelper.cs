@@ -17,6 +17,9 @@ namespace TenEnv.Core
 
         public static void UnhandledExceptionHandle(Assembly assembly, Exception exception)
         {
+            if (Debugger.IsAttached)
+                return;
+
             StringBuilder a = new StringBuilder();
             a.Append(InitialText);
             a.AppendLine("Assembly: " + assembly.FullName);

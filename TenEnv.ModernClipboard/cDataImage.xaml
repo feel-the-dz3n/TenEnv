@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="115" d:DesignWidth="287" Margin="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
     <Grid>
-        <Image x:Name="Img"></Image>
+        <Image x:Name="Img" Stretch="UniformToFill"></Image>
         <Border Background="#49000000"></Border>
     </Grid>
 </UserControl>

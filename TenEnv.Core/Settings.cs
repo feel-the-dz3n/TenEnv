@@ -65,5 +65,6 @@ namespace TenEnv.Core
     public class ClipboardConfig
     {
         public int MaximumEntries = 10;
+        public bool IgnoreFiles = false;
     }
 }

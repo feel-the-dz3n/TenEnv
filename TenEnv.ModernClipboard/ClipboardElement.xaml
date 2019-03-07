@@ -7,9 +7,37 @@
              mc:Ignorable="d" 
              Height="116" Width="288" Margin="16,0,16,16">
 
-    <Grid>
-        <Button></Button>
+    <Grid x:Name="GridMain" Background="#0CFFFFFF" MouseLeave="GridMain_MouseLeave" MouseLeftButtonUp="GridMain_MouseLeftButtonUp" MouseMove="GridMain_MouseMove">
         <Grid x:Name="GridForData" IsHitTestVisible="False"/>
-        <TextBlock x:Name="tbTime" IsHitTestVisible="False" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="13,0,0,15">13:33</TextBlock>
+        <Grid x:Name="MouseOverGrid">
+            <Border BorderThickness="2" BorderBrush="#59000000"></Border>
+            <WrapPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10">
+            <Button Width="20" Height="20" Click="Button_Click">
+                    <Grid IsHitTestVisible="False">
+                        <Rectangle Width="1" Height="10" Fill="Black" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="-45"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                        <Rectangle Width="1" Height="10" Fill="Black" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="45"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
+                </Button>
+            </WrapPanel>
+        </Grid>
+        <TextBlock x:Name="tbTime" IsHitTestVisible="False" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="13,0,0,15" Foreground="#FFB8B8B8">13:33</TextBlock>
     </Grid>
 </UserControl>

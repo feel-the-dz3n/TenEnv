@@ -44,11 +44,10 @@ namespace TenEnv.Core
         {
             while (true)
             {
-                if (ManProcess.HasExited && !Debugger.IsAttached)
+                if (ManProcess != null && ManProcess.HasExited && !Debugger.IsAttached)
                     AppProcess.Kill();
 
                 Thread.Sleep(Timeout);
-
             }
         }
     }

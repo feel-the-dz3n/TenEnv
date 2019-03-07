@@ -45,6 +45,21 @@ namespace TenEnv.Core
             }
         }
 
+        public static string TrimString(string source, int newCount)
+        {
+            string result = "";
+
+            for (int i = 0; i < source.Length; i++)
+            {
+                if (i == newCount - 1)
+                    break;
+
+                result += source[i];
+            }
+
+            return result;
+        }
+
         public static void DisplayWarnings()
         {
         }

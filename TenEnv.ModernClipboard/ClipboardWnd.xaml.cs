@@ -19,7 +19,7 @@ namespace TenEnv.ModernClipboard
     /// </summary>
     public partial class ClipboardWnd : Window
     {
-        private int MaximumInUI = 1;
+        private Core.XmlConfig Config = Core.XmlConfig.LoadConfig();
 
         IntPtr _ClipboardViewerNext = IntPtr.Zero;
         Core.GlobalKeyboardHook hook;
@@ -28,9 +28,6 @@ namespace TenEnv.ModernClipboard
         public ClipboardWnd()
         {
             InitializeComponent();
-
-            var cfg = Core.XmlConfig.LoadConfig();
-            MaximumInUI = cfg.Clipboard.MaximumEntries;
 
             this.Left = this.Width - this.Width;
             this.Top = this.Height - this.Height;
@@ -48,18 +45,22 @@ namespace TenEnv.ModernClipboard
             //cache.Save();
 
             //if (this.Visibility == Visibility.Visible)
+            if (Config.Clipboard.IgnoreFiles && data.GetDataPresent(DataFormats.FileDrop))
+                return;
+
+            if(!DoWeHave(data))
                 AddUI(data, DateTime.Now);
         }
 
         public void AddUI(IDataObject data, DateTime time)
         {
             ClipboardPanel.Children.Insert(0,
-                new ClipboardElement(data, time)
+                new ClipboardElement(this, data, time)
                 );
             
-            if(ClipboardPanel.Children.Count >= MaximumInUI)
+            if(ClipboardPanel.Children.Count >= Config.Clipboard.MaximumEntries)
             {
-                var last = ClipboardPanel.Children[MaximumInUI - 1];
+                var last = ClipboardPanel.Children[Config.Clipboard.MaximumEntries - 1];
 
                 ClipboardPanel.Children.Remove(last);
 
@@ -69,10 +70,22 @@ namespace TenEnv.ModernClipboard
             }
         }
 
+        public bool DoWeHave(IDataObject data)
+        {
+            foreach(var e in ClipboardPanel.Children)
+            {
+                ClipboardElement elem = e as ClipboardElement;
+
+                if (elem.Data == data)
+                    return true;
+            }
+            return false;
+        }
+
         public void UIFromCache(List<ClipboardDataForCache> c)
         {
             foreach (var e in c)
-                ClipboardPanel.Children.Add(new ClipboardElement(e.Data, e.Time));
+                ClipboardPanel.Children.Add(new ClipboardElement(this, e.Data, e.Time));
         }
 
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -110,6 +123,8 @@ namespace TenEnv.ModernClipboard
             this.Visibility = Visibility.Visible;
             this.Show();
             this.Activate();
+
+            PanelScroll.ScrollToTop();
 
             DoAero();
         }

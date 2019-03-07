@@ -64,8 +64,8 @@
     <Compile Include="cDataImage.xaml.cs">
       <DependentUpon>cDataImage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="cDataText.xaml.cs">
-      <DependentUpon>cDataText.xaml</DependentUpon>
+    <Compile Include="cDataStringLike.xaml.cs">
+      <DependentUpon>cDataStringLike.xaml</DependentUpon>
     </Compile>
     <Compile Include="ClipboardDataCache.cs" />
     <Compile Include="ClipboardElement.xaml.cs">
@@ -107,7 +107,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="cDataText.xaml">
+    <Page Include="cDataStringLike.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

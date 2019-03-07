@@ -106,8 +106,6 @@ namespace TenEnv.ModernScreenshot
             // MainGrid.Opacity = 1;
             MainGrid.FadeIn(FadeTime, 250);
             this.Activate();
-
-            throw new Exception("Fuck");
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
