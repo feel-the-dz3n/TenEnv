@@ -11,7 +11,7 @@ namespace TenEnv.Core
     public class XmlConfig
     {
         [XmlIgnore]
-        public const string ConfigFileName = "MwoPowerBotConfig.xml";
+        public const string ConfigFileName = "TenEnvConfiguration.xml";
 
         public bool Tested = false;
         public System.Windows.Media.Color MainColor = System.Windows.Media.Color.FromArgb(0, 0, 0, 0);
