@@ -49,6 +49,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseSettings.cs" />
     <Compile Include="ClipboardHook.cs" />
     <Compile Include="CrashHelper.cs" />
     <Compile Include="DwmApi.cs" />
@@ -72,6 +73,7 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="TenAppHelper.cs" />
+    <Compile Include="XmlConfig.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

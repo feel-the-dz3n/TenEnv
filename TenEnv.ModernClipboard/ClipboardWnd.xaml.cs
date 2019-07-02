@@ -19,8 +19,6 @@ namespace TenEnv.ModernClipboard
     /// </summary>
     public partial class ClipboardWnd : Window
     {
-        private Core.XmlConfig Config = Core.XmlConfig.LoadConfig();
-
         IntPtr _ClipboardViewerNext = IntPtr.Zero;
         Core.GlobalKeyboardHook hook;
         private const int WM_DRAWCLIPBOARD = 0x0308;
@@ -45,7 +43,7 @@ namespace TenEnv.ModernClipboard
             //cache.Save();
 
             //if (this.Visibility == Visibility.Visible)
-            if (Config.Clipboard.IgnoreFiles && data.GetDataPresent(DataFormats.FileDrop))
+            if (Core.Settings.Base.Clipboard.IgnoreFiles && data.GetDataPresent(DataFormats.FileDrop))
                 return;
 
             if(!DoWeHave(data))
@@ -58,9 +56,9 @@ namespace TenEnv.ModernClipboard
                 new ClipboardElement(this, data, time)
                 );
             
-            if(ClipboardPanel.Children.Count >= Config.Clipboard.MaximumEntries)
+            if(ClipboardPanel.Children.Count >= Core.Settings.Base.Clipboard.MaximumEntries)
             {
-                var last = ClipboardPanel.Children[Config.Clipboard.MaximumEntries - 1];
+                var last = ClipboardPanel.Children[Core.Settings.Base.Clipboard.MaximumEntries - 1];
 
                 ClipboardPanel.Children.Remove(last);
 

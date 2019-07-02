@@ -11,18 +11,13 @@ namespace TenEnv.Manager
         static void Main(string[] args)
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-
-            if (args.Contains("/reset"))
-                Core.XmlConfig.Delete();
-
-            var cfg = Core.XmlConfig.LoadConfig();
-
-            if(!cfg.Tested)
+            
+            if(!Core.Settings.Base.Tested)
             {
                 bool Tested = TestTool.Test.Perform();
 
-                cfg.Tested = Tested;
-                cfg.SaveSettings();
+                Core.Settings.Base.Tested = Tested;
+                Core.Settings.Base.Save();
 
                 if (!Tested)
                 {
