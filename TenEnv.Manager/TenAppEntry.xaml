@@ -19,7 +19,7 @@
             <Button x:Name="btnStart" Click="BtnStart_Click" Margin="5,5,2,5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                 <TextBlock Margin="4">Start</TextBlock>
             </Button>
-            <Button x:Name="btnStop" Click="BtnStop_Click" Margin="2,5,5,5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button x:Name="btnStop" Click="BtnStop_Click" Margin="2,5,5,5" VerticalAlignment="Bottom" HorizontalAlignment="Right" IsEnabled="False">
                 <TextBlock Margin="4">Stop</TextBlock>
             </Button>
         </WrapPanel>

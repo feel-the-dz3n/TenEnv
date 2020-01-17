@@ -26,7 +26,6 @@ namespace TenEnv.Manager
             foreach (var app in TenApps.Apps)
             {
                 lbTenApps.Children.Add(new TenAppEntry() { App = app });
-                app.Run();
             }
         }
     }

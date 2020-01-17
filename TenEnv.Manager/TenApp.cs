@@ -20,76 +20,40 @@ namespace TenEnv.Manager
     public class TenApp
     {
         public FileInfo File { get; private set; }
-        public string ProcessName { get; private set; }
-        public Process CurrentProcess => GetProcess();
-
-        public Assembly Info => Assembly.LoadFile(File.FullName);
+        public Assembly Assembly { get; private set; }
+        public Type LoaderType { get; private set; }
 
         public AssemblyDescriptionAttribute Description =>
-            Info.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false).OfType<AssemblyDescriptionAttribute>().FirstOrDefault();
+            Assembly.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false).OfType<AssemblyDescriptionAttribute>().FirstOrDefault();
         public AssemblyTitleAttribute Title =>
-            Info.GetCustomAttributes(typeof(AssemblyTitleAttribute), false).OfType<AssemblyTitleAttribute>().FirstOrDefault();
+            Assembly.GetCustomAttributes(typeof(AssemblyTitleAttribute), false).OfType<AssemblyTitleAttribute>().FirstOrDefault();
 
-
-        private string StartArguments
-            => $"-man:" + Process.GetCurrentProcess().Id;
-
-        public TenApp(string exe)
+        public TenApp(string dll)
         {
-            if (!exe.EndsWith(".exe"))
-                exe += ".exe";
+            if (!dll.EndsWith(".dll"))
+                dll += ".dll";
 
-            File = new FileInfo(exe);
-            ProcessName = File.Name.Remove(File.Name.Length - ".exe".Length, ".exe".Length); // genius
-        }
-
-        public Process GetProcess()
-        {
-            var p = Process.GetProcessesByName(ProcessName);
-
-            if (p.Length == 0)
-                return null;
-            else
-                return p[0];
+            File = new FileInfo(dll);
+            Assembly = Assembly.LoadFile(File.FullName);
+            LoaderType = Assembly.GetType("TenAppSpace.TenAppLoader");
         }
 
         /// <summary>
-        /// Runs or restart TenApp
+        /// Runs TenApp
         /// </summary>
-        public void Restart() => Run();
-
-        /// <summary>
-        /// Runs or restarts TenApp
-        /// </summary>
-        public void Run()
+        public void CreateInstance()
         {
-            var p = GetProcess();
-
-            // If the process found, kill it
-            if (p != null)
-                Stop(true);
-
-            // Create new process and start it
-            p = new Process();
-            p.StartInfo.FileName = File.FullName;
-            p.StartInfo.Arguments = StartArguments;
-            p.Start();
+            var method = LoaderType.GetMethod("InitializeTenApp");
+            method.Invoke(null, new object[] { });
         }
 
         /// <summary>
-        /// Kills TenApp
+        /// Stop instance
         /// </summary>
-        public void Stop(bool WaitForExit = false)
+        public void Stop()
         {
-            var p = GetProcess();
-
-            if (p != null)
-            {
-                p.Kill();
-
-                if (WaitForExit)
-                    p.WaitForExit();
-            }
+            var method = LoaderType.GetMethod("StopTenApp");
+            method.Invoke(null, new object[] { });
         }
     }
 }
