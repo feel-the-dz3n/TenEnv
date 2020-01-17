@@ -38,7 +38,7 @@ namespace TenEnv.Manager
             }
         }
 
-        private void BtnStart_Click(object sender, RoutedEventArgs e)
+        public void BtnStart_Click(object sender, RoutedEventArgs e)
         {
             App.CreateInstance();
             btnStart.IsEnabled = false;

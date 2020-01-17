@@ -10,7 +10,10 @@
 
         <ScrollViewer Margin="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <StackPanel Margin="5">
-                <TextBlock FontSize="16" Margin="5">TenEnv modules:</TextBlock>
+                <Grid>
+                    <TextBlock FontSize="16" Margin="5">TenEnv modules:</TextBlock>
+                    <Button x:Name="btnRunAll" VerticalAlignment="Center" HorizontalAlignment="Right" Click="BtnRunAll_Click">Run All</Button>
+                </Grid>
                 <StackPanel x:Name="lbTenApps"/>
             </StackPanel>
         </ScrollViewer>

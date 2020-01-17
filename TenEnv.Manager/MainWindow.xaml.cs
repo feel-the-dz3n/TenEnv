@@ -28,5 +28,13 @@ namespace TenEnv.Manager
                 lbTenApps.Children.Add(new TenAppEntry() { App = app });
             }
         }
+
+        private void BtnRunAll_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var app in lbTenApps.Children.OfType<TenAppEntry>())
+                app.BtnStart_Click(null, null);
+
+            btnRunAll.IsEnabled = false;
+        }
     }
 }
