@@ -8,8 +8,11 @@
         Title="Windows 10 Environment" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
 
-        <ListBox x:Name="lbTenApps" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
-
-        </ListBox>
+        <ScrollViewer Margin="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Margin="5">
+                <TextBlock FontSize="16" Margin="5">TenEnv modules:</TextBlock>
+                <StackPanel x:Name="lbTenApps"/>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>
