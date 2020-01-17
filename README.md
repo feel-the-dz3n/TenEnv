@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/nb7uufafv3jxnknj?svg=true)](https://ci.appveyor.com/project/feel-the-dz3n/tenenv)
