@@ -13,13 +13,9 @@ namespace TenEnv.Core
         private const string InitialText = "Something of Windows 10 Environment just crashed. Please, report this here:\r\n" +
             "https://github.com/feel-the-dz3n/TenEnv/issues/new" +
             "\r\n\r\n";
-        private const string CrashHandlerExe = "TenEnv.ExceptionHandler.exe";
 
         public static void UnhandledExceptionHandle(Assembly assembly, Exception exception)
         {
-            if (Debugger.IsAttached)
-                return;
-
             StringBuilder a = new StringBuilder();
             a.Append(InitialText);
             a.AppendLine("Assembly: " + assembly.FullName);
@@ -30,21 +26,23 @@ namespace TenEnv.Core
             a.AppendLine("Exception Details:");
             a.Append(exception.ToString());
 
+
+            if (Debugger.IsAttached)
+            {
+                Debugger.Log(0, "DEBUG", a.ToString());
+                return;
+            }
+
             try
             {
-                if (File.Exists(CrashHandlerExe))
-                {
-                    string args = "\"base64:" + Base64Encode(a.ToString()) + "\"";
-
-                    Process.Start(CrashHandlerExe, args);
-                }
+                TenEnv.ExceptionHandler.Program.Main(new string[] { a.ToString() });
             }
             catch
             {
                 System.Windows.Forms.MessageBox.Show(
-                    "Press Ctrl+C to copy this\r\n\r\n" + a.ToString(), 
-                    "Windows 10 Environment Crashed", 
-                    System.Windows.Forms.MessageBoxButtons.OK, 
+                    "Press Ctrl+C to copy this\r\n\r\n" + a.ToString(),
+                    "Windows 10 Environment Crashed",
+                    System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Error);
             }
 

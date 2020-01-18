@@ -7,37 +7,10 @@ using System.Windows.Forms;
 
 namespace TenEnv.ExceptionHandler
 {
-    static class Program
+    public static class Program
     {
         public const string IssuesPage = "https://github.com/feel-the-dz3n/TenEnv/issues";
         public const string IssuesPageNew = "https://github.com/feel-the-dz3n/TenEnv/issues/new";
-
-        public static string Base64Decode(string base64EncodedData)
-        {
-            try
-            {
-                var base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
-                return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
-            }
-            catch (Exception ex)
-            {
-                return "Can't decode program's output: " + ex.Message + $" ({ex.GetType().Name})";
-            }
-        }
-
-        public static string ReadFile(string file)
-        {
-
-            try
-            {
-                using (StreamReader r = new StreamReader(file))
-                    return $"File '{file}':\r\n{r.ReadToEnd()}";
-            }
-            catch (Exception ex)
-            {
-                return $"Can't read file '{file}': {ex.Message} ({ex.GetType().Name})";
-            }
-        }
 
         // public const string AngryText = "Something went wrong with Base64 decoder, so let's think that this program crashed too.\r\n\r\n\r\nStupid script kiddies. >:|";
         public static string DecodedText = "";
@@ -55,7 +28,7 @@ namespace TenEnv.ExceptionHandler
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Args = args;
 
@@ -66,12 +39,7 @@ namespace TenEnv.ExceptionHandler
             }
 
             foreach (var arg in Args)
-            {
-                if (arg.StartsWith("base64:"))
-                    AppendDecoded(Base64Decode(arg.Remove(0, "base64:".Length)));
-                else if (arg.StartsWith("txt:"))
-                    AppendDecoded(ReadFile(arg.Remove(0, "txt:".Length)));
-            }
+                AppendDecoded(arg);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

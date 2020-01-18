@@ -10,11 +10,21 @@ namespace TenEnv.Manager
 {
     public class TenApps
     {
-        public static List<TenApp> Apps = new List<TenApp>()
+        public static List<TenApp> Apps = new List<TenApp>();
+
+        public static void InitializeAppsList()
         {
-            new TenApp("TenApp.ModernClipboard"),
-            new TenApp("TenApp.ModernScreenshot")
-        };
+            Apps.Clear();
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+
+            foreach (var lib in Directory.GetFiles(new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.FullName, "TenApp.*.dll"))
+            {
+                var File = new FileInfo(lib);
+                Apps.Add(new TenApp(File.Name.Remove(File.Name.Length - ".dll".Length, ".dll".Length)));
+            }
+        }
     }
 
     public class TenApp

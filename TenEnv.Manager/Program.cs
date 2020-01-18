@@ -11,22 +11,8 @@ namespace TenEnv.Manager
         static void Main(string[] args)
         {
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
-            
-            if(!Core.Settings.Base.Tested)
-            {
-                bool Tested = TestTool.Test.Perform();
 
-                Core.Settings.Base.Tested = Tested;
-                Core.Settings.Base.Save();
-
-                if (!Tested)
-                {
-                    var d = System.Windows.Forms.MessageBox.Show("Test failed. Do you want to continue?", "Windows 10 Environment Manager", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Error);
-
-                    if (d == System.Windows.Forms.DialogResult.No)
-                        Environment.Exit(1);
-                }
-            }
+            TenApps.InitializeAppsList();
 
             new MainWindow().ShowDialog();
         }

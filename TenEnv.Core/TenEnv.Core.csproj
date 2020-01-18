@@ -84,5 +84,11 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TenEnv.ExceptionHandler\TenEnv.ExceptionHandler.csproj">
+      <Project>{f395c5ee-e7a3-4fcb-9e65-ab27872feade}</Project>
+      <Name>TenEnv.ExceptionHandler</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

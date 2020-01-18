@@ -111,10 +111,6 @@
       <Project>{0776138f-2374-4519-bcb2-de0734d271b7}</Project>
       <Name>TenApp.ModernScreenshot</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TenEnv.TestTool\TenEnv.TestTool.csproj">
-      <Project>{c3ae5539-a206-4250-afad-206ab7d65f88}</Project>
-      <Name>TenEnv.TestTool</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
