@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:TenEnv.Manager"
              mc:Ignorable="d">
     <Grid>
-        <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5,0,90,0">
+        <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="5,0,130,0">
             <TextBlock TextWrapping="Wrap">
                 <Run x:Name="tbAppName" FontSize="14">Module Name</Run><LineBreak/>
                 <Run x:Name="tbAppDescription" Foreground="#F2000000">I like this program! It's incredible how it works! </Run>
@@ -16,7 +16,10 @@
         </WrapPanel>
 
         <WrapPanel VerticalAlignment="Top" HorizontalAlignment="Right">
-            <Button x:Name="btnStart" Click="BtnStart_Click" Margin="5,5,2,5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button x:Name="btnTest" Click="BtnTest_Click"  Margin="5,5,2,5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                <TextBlock Margin="4">Test</TextBlock>
+            </Button>
+            <Button x:Name="btnStart" Click="BtnStart_Click" Margin="2,5,2,5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
                 <TextBlock Margin="4">Start</TextBlock>
             </Button>
             <Button x:Name="btnStop" Click="BtnStop_Click" Margin="2,5,5,5" VerticalAlignment="Bottom" HorizontalAlignment="Right" IsEnabled="False">

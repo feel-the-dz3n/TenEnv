@@ -51,7 +51,7 @@ namespace TenEnv.Manager
         /// <summary>
         /// Runs TenApp
         /// </summary>
-        public void CreateInstance()
+        public void Initialize()
         {
             var method = LoaderType.GetMethod("InitializeTenApp");
             method.Invoke(null, new object[] { });
@@ -64,6 +64,16 @@ namespace TenEnv.Manager
         {
             var method = LoaderType.GetMethod("StopTenApp");
             method.Invoke(null, new object[] { });
+        }
+
+
+        /// <summary>
+        /// Test TenApp
+        /// </summary>
+        public bool Test()
+        {
+            var method = LoaderType.GetMethod("TestTenApp");
+            return (bool)method.Invoke(null, new object[] { });
         }
     }
 }

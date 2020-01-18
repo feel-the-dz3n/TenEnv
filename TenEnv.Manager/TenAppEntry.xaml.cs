@@ -40,13 +40,19 @@ namespace TenEnv.Manager
 
         public void BtnStart_Click(object sender, RoutedEventArgs e)
         {
-            App.CreateInstance();
+            App.Initialize();
             btnStart.IsEnabled = false;
         }
 
         private void BtnStop_Click(object sender, RoutedEventArgs e)
         {
             App.Stop();
+            btnStart.IsEnabled = true;
+        }
+
+        private void BtnTest_Click(object sender, RoutedEventArgs e)
+        {
+            App.Test();
         }
     }
 }
