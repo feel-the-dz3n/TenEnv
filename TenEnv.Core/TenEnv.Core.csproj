@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="TenAppHelper.cs" />
+    <Compile Include="User32.cs" />
     <Compile Include="XmlConfig.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

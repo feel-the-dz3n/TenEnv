@@ -12,12 +12,47 @@ namespace TenEnv.Core
     public class DwmApi
     {
         [StructLayout(LayoutKind.Sequential)]
+        public struct PSIZE
+        {
+            public int x;
+            public int y;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
         public struct Margins
         {
             public int cxLeftWidth;
             public int cxRightWidth;
             public int cyTopHeight;
             public int cyBottomHeight;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct DWM_THUMBNAIL_PROPERTIES
+        {
+            public int dwFlags;
+            public Rect rcDestination;
+            public Rect rcSource;
+            public byte opacity;
+            public bool fVisible;
+            public bool fSourceClientAreaOnly;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct Rect
+        {
+            public Rect(int left, int top, int right, int bottom)
+            {
+                Left = left;
+                Top = top;
+                Right = right;
+                Bottom = bottom;
+            }
+
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
         }
 
         public static Margins GetMargins(IntPtr windowHandle, int left, int right, int top, int bottom)
@@ -65,6 +100,22 @@ namespace TenEnv.Core
             }
             return false;
         }
+
+        public static readonly int DWM_TNP_VISIBLE = 0x8;
+        public static readonly int DWM_TNP_OPACITY = 0x4;
+        public static readonly int DWM_TNP_RECTDESTINATION = 0x1;
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmRegisterThumbnail(IntPtr dest, IntPtr src, out IntPtr thumb);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmUnregisterThumbnail(IntPtr thumb);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmQueryThumbnailSourceSize(IntPtr thumb, out PSIZE size);
+
+        [DllImport("dwmapi.dll")]
+        public static extern int DwmUpdateThumbnailProperties(IntPtr hThumb, ref DWM_THUMBNAIL_PROPERTIES props);
 
         [DllImport("DwmApi.dll")]
         public static extern int DwmExtendFrameIntoClientArea(IntPtr hwnd, ref Margins pMarInset);

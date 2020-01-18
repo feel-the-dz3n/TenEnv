@@ -95,6 +95,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TenApp.DWMTools\TenApp.DWMTools.csproj">
+      <Project>{b72f351b-7dbd-4e35-a1e2-3c4e392d3132}</Project>
+      <Name>TenApp.DWMTools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TenEnv.Core\TenEnv.Core.csproj">
       <Project>{941efc2c-17e8-45cf-89f1-4b11ecd197ff}</Project>
       <Name>TenEnv.Core</Name>
