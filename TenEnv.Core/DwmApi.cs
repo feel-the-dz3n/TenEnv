@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Interop;
 
 namespace TenEnv.Core
 {
-    using System.Windows.Interop;
-    using System.Collections.Generic;
-    using System.Runtime.InteropServices;
-    using System.Windows;
-    using System.Windows.Media;
-
     public class DwmApi
     {
         [StructLayout(LayoutKind.Sequential)]
@@ -58,6 +55,7 @@ namespace TenEnv.Core
                 DwmBbTransitionOnMaximized = 4
             }
         }
+
         public static bool CheckAeroEnabled()
         {
             if (Environment.OSVersion.Version.Major >= 6)
@@ -69,9 +67,7 @@ namespace TenEnv.Core
         }
 
         [DllImport("DwmApi.dll")]
-        public static extern int DwmExtendFrameIntoClientArea(
-       IntPtr hwnd,
-       ref Margins pMarInset);
+        public static extern int DwmExtendFrameIntoClientArea(IntPtr hwnd, ref Margins pMarInset);
 
         [DllImport("dwmapi.dll", PreserveSig = false)]
         public static extern void DwmEnableBlurBehindWindow(IntPtr hwnd, ref DwmBlurbehind blurBehind);
